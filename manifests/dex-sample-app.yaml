@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dex-sample-app
+  labels:
+    app: dex-sample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dex-sample-app
+  template:
+    metadata:
+      labels:
+        app: dex-sample-app
+    spec:
+      containers:
+      - name: dex-sample-app
+        image: dex-sample-app:dev
+        command: 
+          - "/dex-sample-app"
+          - "--issuer=http://dex.dex-system.svc:32000"
